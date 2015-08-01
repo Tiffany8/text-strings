@@ -75,6 +75,9 @@ class TextString(object):
 
             >>> TextString._string_confirmation(5)
             Input should be a string.
+
+            >>> TextString._string_confirmation("")
+            The string is empty.
         """
 
         try:
@@ -82,7 +85,10 @@ class TextString(object):
         except AttributeError:
             print "Input should be a string."
         else:
-            return astring
+            if astring == "":
+                print "The string is empty."
+            else:
+                return astring
 
     @staticmethod
     def _tokenize_sentences(astring):
