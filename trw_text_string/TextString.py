@@ -1,9 +1,11 @@
 """ This module describes the class TextString."""
+
 #!/usr/bin/python
 # coding: utf8
 
 import re
 
+__version__ = '0.0.2'
 
 class TextString(object):
     """TextString class creates instances of text string objects for the
