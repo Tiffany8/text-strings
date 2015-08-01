@@ -10,7 +10,7 @@ __version__ = '0.0.4'
 class TextString(object):
     """TextString class creates instances of text string objects for the
     purpose of retrieving bigrams (or word pairs) that occur more than
-    once in the string."""
+    once in the string independent of case and order."""
 
     def __init__(self, string):
         """Constructor for this TextString class."""
