@@ -31,13 +31,13 @@ class TextString(object):
             Print a list of triplets. Each triplet is a pair of words and
             a count, and returns the list of word pairs with occurance.
 
-        Example:
-            >>> text_string_object = TextString("Is this? This is, indeed.")
+        Example(s):
+            >>> text_string_object = TextString("Is this? This is; indeed.")
             >>> text_string_object.get_word_pairs()
             is, this: 2
 
             >>> text_string_object = TextString("5")
-            >>>text_string_object.get_word_pairs()
+            >>> text_string_object.get_word_pairs()
             No word pairs occured more than once.
 
             Not optimized to recognize characters outside of ordinal range(128)
