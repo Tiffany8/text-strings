@@ -1,7 +1,7 @@
-""" This module describes the class TextString."""
+ #!/usr/bin/python
+ # coding= utf8
 
-#!/usr/bin/python
-# coding: utf8
+""" This module describes the class TextString."""
 
 import re
 
@@ -23,7 +23,7 @@ class TextString(object):
 
         return "<TextString string: %s>" % (self.string)
 
-    def return_word_pairs(self):
+    def get_word_pairs(self):
         """
         Prints out pairs of bigrams with instances greater than two.
 
@@ -33,8 +33,18 @@ class TextString(object):
 
         Example:
             >>> text_string_object = TextString("Is this? This is, indeed.")
-            >>> text_string_object.return_word_pairs()
+            >>> text_string_object.get_word_pairs()
             is, this: 2
+
+            >>> text_string_object = TextString("5")
+            >>>text_string_object.get_word_pairs()
+            No word pairs occured more than once.
+
+            Not optimized to recognize characters outside of ordinal range(128)
+            >>> text_string_object = TextString("Is Università a place? A place. Università is.")
+            >>> text_string_object.get_word_pairs()
+            a, place: 2
+            is, universit: 2
         """
 
         string = self.string
@@ -92,7 +102,7 @@ class TextString(object):
             >>> TextString._tokenize_sentences("Is this, this is, indeed.")
             ['Is this, this is, indeed.']
         """
-        regex_pattern = re.compile(r'([a-zA-Z][^\.!?]*[\.!?])', re.M)
+        regex_pattern = re.compile(r'([a-zA-ZÀ-ÿ][^\.!?]*[\.!?])', re.M)
         sentence_list = regex_pattern.findall(astring)
         # print "sentence tokenizer: ", sentence_list
         return sentence_list
