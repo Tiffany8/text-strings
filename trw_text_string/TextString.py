@@ -5,7 +5,7 @@
 
 import re
 
-__version__ = '0.0.3'
+__version__ = '0.0.4'
 
 class TextString(object):
     """TextString class creates instances of text string objects for the
