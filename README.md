@@ -7,7 +7,7 @@
 >>> string_example = """Hello, I like nuts. Do you like nuts? No? Are you sure?
                         Why don't you like nuts? Are you nuts? I like you"""
 >>> text_string_object = TextString(string_example)
->>> text_string_object.return_word_pairs()
+>>> text_string_object.get_word_pairs()
 are you: 2
 like nuts: 3
 you like: 3
