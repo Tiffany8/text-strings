@@ -1,4 +1,4 @@
-#### module for returning word pairs from text strings
+##### Module for returning word pairs from text strings
 
 ##### Example:
 
