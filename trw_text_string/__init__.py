@@ -1,1 +1,1 @@
-from TextString import TextString
+from WordPairGenerator import WordPairGenerator
