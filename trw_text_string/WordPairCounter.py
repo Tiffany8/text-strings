@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # coding= utf8
 
-""" This module describes the class WordPairCounter which looks for word pairs in a string."""
+""" This module describes the class WordPairCounter which keeps track of word pairs and their count in a string."""
 
 import re
 
