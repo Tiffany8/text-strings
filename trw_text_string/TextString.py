@@ -80,16 +80,13 @@ class TextString(object):
             >>> TextString._confirm_string("")
             The string is empty.
         """
-
-        try:
-            astring.split()
-        except AttributeError:
-            print "Input should be a string."
-        else:
+        if isinstance(astring, basestring):
             if astring == "":
                 print "The string is empty."
             else:
                 return astring
+        else:
+            print "Input should be a string."
 
     @staticmethod
     def _tokenize_sentences(astring):
