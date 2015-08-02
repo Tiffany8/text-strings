@@ -245,7 +245,7 @@ class TextString(object):
         """
         if word_pair_list:
             for word_pair in word_pair_list:
-                print "%s: %d" % (", ".join(word_pair[0]), word_pair[1])
+                print "%s: %d" % (" ".join(word_pair[0]), word_pair[1])
         else:
             print "No word pairs occured more than once."
 
