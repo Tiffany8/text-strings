@@ -109,7 +109,7 @@ class TextString(object):
             >>> TextString._tokenize_sentences("Is this, this is, indeed.")
             ['Is this, this is, indeed.']
         """
-        regex_pattern = re.compile(r'([a-zA-ZÀ-ÿ][^\.!?]*[\.!?])', re.M)
+        regex_pattern = re.compile(r'([a-zA-Z][^\.!?]*)', re.M)
         sentence_list = regex_pattern.findall(astring)
         # print "sentence tokenizer: ", sentence_list
         return sentence_list
