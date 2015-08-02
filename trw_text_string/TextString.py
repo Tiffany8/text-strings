@@ -16,7 +16,7 @@ class TextString(object):
     def __init__(self, string):
         """Constructor for this TextString class."""
 
-        confirmed_string = self._string_confirmation(string)
+        confirmed_string = self._confirm_string(string)
         self.string = confirmed_string
 
     def __repr__(self):
@@ -55,11 +55,11 @@ class TextString(object):
             word_list = self._tokenize_words(sentence)
             word_pair_dict = self._create_word_pairs(word_list, word_pair_dict)
 
-        word_pair_list = self._word_pair_instance_more_than_one(word_pair_dict)
+        word_pair_list = self._return_wordpairs_with_multiple_instances(word_pair_dict)
         self._print_word_pair_list(word_pair_list)
 
     @staticmethod
-    def _string_confirmation(astring):
+    def _confirm_string(astring):
         """
         Confirm that input is a string.
 
@@ -71,13 +71,13 @@ class TextString(object):
             raised.
 
         Example(s):
-            >>> TextString._string_confirmation("Is this? This is, indeed.")
+            >>> TextString._confirm_string("Is this? This is, indeed.")
             'Is this? This is, indeed.'
 
-            >>> TextString._string_confirmation(5)
+            >>> TextString._confirm_string(5)
             Input should be a string.
 
-            >>> TextString._string_confirmation("")
+            >>> TextString._confirm_string("")
             The string is empty.
         """
 
@@ -194,7 +194,7 @@ class TextString(object):
         return word_pair_dict
 
     @staticmethod
-    def _word_pair_instance_more_than_one(word_pair_dict):
+    def _return_wordpairs_with_multiple_instances(word_pair_dict):
         """
         Iterate through dictionary items and append word pairs
         where key value is greater than 1 to a list.
@@ -209,11 +209,11 @@ class TextString(object):
 
         Example(s):
             >>> word_pair_dict = {('this', 'is'): 1, ('is', 'indeed'): 1}
-            >>> TextString._word_pair_instance_more_than_one(word_pair_dict)
+            >>> TextString._return_wordpairs_with_multiple_instances(word_pair_dict)
             []
 
             >>> word_pair_dict = {('this', 'is'): 1, ('is', 'indeed'): 2}
-            >>> TextString._word_pair_instance_more_than_one(word_pair_dict)
+            >>> TextString._return_wordpairs_with_multiple_instances(word_pair_dict)
             [(('is', 'indeed'), 2)]
         """
         word_pair_list = []
