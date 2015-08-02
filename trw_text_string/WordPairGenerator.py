@@ -35,7 +35,11 @@ class WordPairGenerator(object):
         Example(s):
             >>> text_string_object = WordPairGenerator("Is this? This is; indeed.")
             >>> text_string_object.get_word_pairs()
-            is, this: 2
+            is this: 2
+
+            >>> text_string_object = WordPairGenerator("a a a")
+            >>> text_string_object.get_word_pairs()
+            a a: 2
 
             >>> text_string_object = WordPairGenerator("5")
             >>> text_string_object.get_word_pairs()
@@ -44,8 +48,8 @@ class WordPairGenerator(object):
             Not optimized to recognize characters outside of ordinal range(128)
             >>> text_string_object = WordPairGenerator("Is Università a place? A place. Università is.")
             >>> text_string_object.get_word_pairs()
-            a, place: 2
-            is, universit: 2
+            a place: 2
+            is universit: 2
         """
 
         string = self.string
@@ -101,10 +105,10 @@ class WordPairGenerator(object):
 
         Example(s):
             >>> WordPairGenerator._tokenize_sentences("Is this? This is, indeed.")
-            ['Is this?', 'This is, indeed.']
+            ['Is this?', 'This is, indeed']
 
             >>> WordPairGenerator._tokenize_sentences("Is this, this is, indeed.")
-            ['Is this, this is, indeed.']
+            ['Is this, this is, indeed']
         """
         regex_pattern = re.compile(r'([a-zA-Z][^\.!?]*)', re.M)
         sentence_list = regex_pattern.findall(astring)
@@ -231,7 +235,7 @@ class WordPairGenerator(object):
         Example(s):
             >>> word_pair_list = [(('is', 'indeed'), 2)]
             >>> WordPairGenerator._print_word_pair_list(word_pair_list)
-            is, indeed: 2
+            is indeed: 2
 
             >>> word_pair_list = []
             >>> WordPairGenerator._print_word_pair_list(word_pair_list)
