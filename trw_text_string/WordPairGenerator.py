@@ -105,7 +105,7 @@ class WordPairGenerator(object):
 
         Example(s):
             >>> WordPairGenerator._tokenize_sentences("Is this? This is, indeed.")
-            ['Is this?', 'This is, indeed']
+            ['Is this', 'This is, indeed']
 
             >>> WordPairGenerator._tokenize_sentences("Is this, this is, indeed.")
             ['Is this, this is, indeed']
