@@ -108,7 +108,6 @@ class WordPairGenerator(object):
         """
         regex_pattern = re.compile(r'([a-zA-Z][^\.!?]*)', re.M)
         sentence_list = regex_pattern.findall(astring)
-        # print "sentence tokenizer: ", sentence_list
         return sentence_list
 
     @staticmethod
@@ -133,7 +132,6 @@ class WordPairGenerator(object):
         """
 
         string_no_punctuation = re.sub(ur"[^\w\d'\s]+", '', astring)
-        # print "stripped punc: ", string_no_punctuation
         return string_no_punctuation
 
     @staticmethod
@@ -154,7 +152,6 @@ class WordPairGenerator(object):
 
         string_no_punctuation = WordPairGenerator._strip_punctuation(one_sentence_string)
         word_list = string_no_punctuation.split()
-        # print "word tokenizer: ", word_list
         return word_list
 
     @staticmethod
