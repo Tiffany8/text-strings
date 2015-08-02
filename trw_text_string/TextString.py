@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # coding= utf8
 
-""" This module describes the class TextString."""
+""" This module describes the class TextString which looks for word pairs in a string."""
 
 import re
 
