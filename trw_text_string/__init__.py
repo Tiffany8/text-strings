@@ -1,1 +1,1 @@
-from WordPairGenerator import WordPairGenerator
+from WordPairCounter import WordPairCounter

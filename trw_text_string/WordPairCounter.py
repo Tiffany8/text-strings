@@ -1,20 +1,20 @@
 #!/usr/bin/python
 # coding= utf8
 
-""" This module describes the class WordPairGenerator which looks for word pairs in a string."""
+""" This module describes the class WordPairCounter which looks for word pairs in a string."""
 
 import re
 
 __version__ = '0.0.5'
 
 
-class WordPairGenerator(object):
-    """WordPairGenerator class creates instances of text string objects for the
+class WordPairCounter(object):
+    """WordPairCounter class creates instances of text string objects for the
     purpose of retrieving bigrams (or word pairs) that occur more than
     once in the string independent of case and order."""
 
     def __init__(self, string):
-        """Constructor for this WordPairGenerator class."""
+        """Constructor for this WordPairCounter class."""
 
         confirmed_string = self._confirm_string(string)
         self.string = confirmed_string
@@ -22,7 +22,7 @@ class WordPairGenerator(object):
     def __repr__(self):
         """Provide helpful representation when printed."""
 
-        return "<WordPairGenerator string: %s>" % (self.string)
+        return "<WordPairCounter string: %s>" % (self.string)
 
     def get_word_pairs(self):
         """
@@ -33,20 +33,20 @@ class WordPairGenerator(object):
             a count, and returns the list of word pairs with occurance.
 
         Example(s):
-            >>> text_string_object = WordPairGenerator("Is this? This is; indeed.")
+            >>> text_string_object = WordPairCounter("Is this? This is; indeed.")
             >>> text_string_object.get_word_pairs()
             is this: 2
 
-            >>> text_string_object = WordPairGenerator("a a a")
+            >>> text_string_object = WordPairCounter("a a a")
             >>> text_string_object.get_word_pairs()
             a a: 2
 
-            >>> text_string_object = WordPairGenerator("5")
+            >>> text_string_object = WordPairCounter("5")
             >>> text_string_object.get_word_pairs()
             No word pairs occured more than once.
 
             Not optimized to recognize characters outside of ordinal range(128)
-            >>> text_string_object = WordPairGenerator("Is Università a place? A place. Università is.")
+            >>> text_string_object = WordPairCounter("Is Università a place? A place. Università is.")
             >>> text_string_object.get_word_pairs()
             a place: 2
             is universit: 2
@@ -75,13 +75,13 @@ class WordPairGenerator(object):
             raised.
 
         Example(s):
-            >>> WordPairGenerator._confirm_string("Is this? This is, indeed.")
+            >>> WordPairCounter._confirm_string("Is this? This is, indeed.")
             'Is this? This is, indeed.'
 
-            >>> WordPairGenerator._confirm_string(5)
+            >>> WordPairCounter._confirm_string(5)
             Input should be a string.
 
-            >>> WordPairGenerator._confirm_string("")
+            >>> WordPairCounter._confirm_string("")
             The string is empty.
         """
         if isinstance(astring, basestring):
@@ -104,10 +104,10 @@ class WordPairGenerator(object):
             Returns a list of sentences.
 
         Example(s):
-            >>> WordPairGenerator._tokenize_sentences("Is this? This is, indeed.")
+            >>> WordPairCounter._tokenize_sentences("Is this? This is, indeed.")
             ['Is this', 'This is, indeed']
 
-            >>> WordPairGenerator._tokenize_sentences("Is this, this is, indeed.")
+            >>> WordPairCounter._tokenize_sentences("Is this, this is, indeed.")
             ['Is this, this is, indeed']
         """
         regex_pattern = re.compile(r'([a-zA-Z][^\.!?]*)', re.M)
@@ -127,11 +127,11 @@ class WordPairGenerator(object):
 
         Example(s):
             >>> astring = "Is this, this is, indeed."
-            >>> WordPairGenerator._strip_punctuation(astring)
+            >>> WordPairCounter._strip_punctuation(astring)
             'Is this this is indeed'
 
             >>> astring = "Is this"
-            >>> WordPairGenerator._strip_punctuation(astring)
+            >>> WordPairCounter._strip_punctuation(astring)
             'Is this'
         """
 
@@ -150,11 +150,11 @@ class WordPairGenerator(object):
             Returns a list of the words in the sentence sans punctuation.
 
         Example(s):
-            >>> WordPairGenerator._tokenize_words("This is, indeed.")
+            >>> WordPairCounter._tokenize_words("This is, indeed.")
             ['This', 'is', 'indeed']
         """
 
-        string_no_punctuation = WordPairGenerator._strip_punctuation(one_sentence_string)
+        string_no_punctuation = WordPairCounter._strip_punctuation(one_sentence_string)
         word_list = string_no_punctuation.split()
         return word_list
 
@@ -175,7 +175,7 @@ class WordPairGenerator(object):
         Example(s):
             >>> word_list = ["This", "is", "indeed"]
             >>> word_pair_dict = {}
-            >>> WordPairGenerator._create_word_pairs(word_list, word_pair_dict)
+            >>> WordPairCounter._create_word_pairs(word_list, word_pair_dict)
             {('this', 'is'): 1, ('is', 'indeed'): 1}
         """
 
@@ -207,11 +207,11 @@ class WordPairGenerator(object):
 
         Example(s):
             >>> word_pair_dict = {('this', 'is'): 1, ('is', 'indeed'): 1}
-            >>> WordPairGenerator._return_wordpairs_with_multiple_instances(word_pair_dict)
+            >>> WordPairCounter._return_wordpairs_with_multiple_instances(word_pair_dict)
             []
 
             >>> word_pair_dict = {('this', 'is'): 1, ('is', 'indeed'): 2}
-            >>> WordPairGenerator._return_wordpairs_with_multiple_instances(word_pair_dict)
+            >>> WordPairCounter._return_wordpairs_with_multiple_instances(word_pair_dict)
             [(('is', 'indeed'), 2)]
         """
         word_pair_list = []
@@ -234,11 +234,11 @@ class WordPairGenerator(object):
 
         Example(s):
             >>> word_pair_list = [(('is', 'indeed'), 2)]
-            >>> WordPairGenerator._print_word_pair_list(word_pair_list)
+            >>> WordPairCounter._print_word_pair_list(word_pair_list)
             is indeed: 2
 
             >>> word_pair_list = []
-            >>> WordPairGenerator._print_word_pair_list(word_pair_list)
+            >>> WordPairCounter._print_word_pair_list(word_pair_list)
             No word pairs occured more than once.
         """
         if word_pair_list:
